@@ -71,7 +71,7 @@ function HeaderOne() {
                   p={1}
                   onClick={(e) => e.preventDefault()}
                 >
-                  About Us
+                  User Activities
                 </MKTypography>
               </MKBox>
               <MKBox component="li">

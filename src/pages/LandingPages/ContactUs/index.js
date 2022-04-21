@@ -37,15 +37,7 @@ function ContactUs() {
   return (
     <>
       <MKBox position="fixed" top="0.5rem" width="100%">
-        <DefaultNavbar
-          routes={routes}
-          action={{
-            type: "external",
-            route: "https://www.creative-tim.com/product/material-kit-react",
-            label: "free download",
-            color: "info",
-          }}
-        />
+        <DefaultNavbar routes={routes} />
       </MKBox>
       <Grid container spacing={3} alignItems="center">
         <Grid item xs={12} lg={6}>
@@ -90,33 +82,24 @@ function ContactUs() {
               mt={-3}
             >
               <MKTypography variant="h3" color="white">
-                Contact us
+                Track Your Order
               </MKTypography>
             </MKBox>
             <MKBox p={3}>
               <MKTypography variant="body2" color="text" mb={3}>
-                For further questions, including partnership opportunities, please email
-                hello@creative-tim.com or contact using our contact form.
+                Please enter your order id here. If not found, email us.
               </MKTypography>
               <MKBox width="100%" component="form" method="post" autocomplete="off">
                 <Grid container spacing={3}>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={6} md={12}>
                     <MKInput
                       variant="standard"
-                      label="Full Name"
+                      label="Order id"
                       InputLabelProps={{ shrink: true }}
                       fullWidth
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <MKInput
-                      type="email"
-                      variant="standard"
-                      label="Email"
-                      InputLabelProps={{ shrink: true }}
-                      fullWidth
-                    />
-                  </Grid>
+                  {/*                   
                   <Grid item xs={12}>
                     <MKInput
                       variant="standard"
@@ -127,11 +110,11 @@ function ContactUs() {
                       fullWidth
                       rows={6}
                     />
-                  </Grid>
+                  </Grid> */}
                 </Grid>
                 <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
                   <MKButton type="submit" variant="gradient" color="info">
-                    Send Message
+                    Submit
                   </MKButton>
                 </Grid>
               </MKBox>
@@ -139,7 +122,7 @@ function ContactUs() {
           </MKBox>
         </Grid>
       </Grid>
-      <MKBox pt={6} px={1} mt={6}>
+      <MKBox pt={0} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
     </>

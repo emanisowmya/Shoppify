@@ -61,7 +61,7 @@ function Breadcrumbs({ routes, ...rest }) {
 
 // Typechecking props for the Breadcrumbs
 Breadcrumbs.propTypes = {
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  routes: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
 };
 
 export default Breadcrumbs;

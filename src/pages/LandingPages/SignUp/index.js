@@ -1,8 +1,5 @@
 import { useState } from "react";
 
-// react-router-dom components
-import { Link } from "react-router-dom";
-
 // @mui material components
 import Card from "@mui/material/Card";
 import Switch from "@mui/material/Switch";
@@ -29,9 +26,9 @@ import routes from "routes";
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
 function SignInBasic() {
-  const [rememberMe, setRememberMe] = useState(false);
+  const [sellerHu, setSellerHu] = useState(false);
 
-  const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  const handleSetSellerHu = () => setSellerHu(!sellerHu);
 
   return (
     <>
@@ -70,7 +67,7 @@ function SignInBasic() {
                 textAlign="center"
               >
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-                  Sign in
+                  Sign up
                 </MKTypography>
                 <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
                   <Grid item xs={2}>
@@ -83,42 +80,33 @@ function SignInBasic() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
+                    <MKInput type="name" label="Name" fullWidth />
+                  </MKBox>
+                  <MKBox mb={2}>
                     <MKInput type="email" label="Email" fullWidth />
                   </MKBox>
                   <MKBox mb={2}>
                     <MKInput type="password" label="Password" fullWidth />
                   </MKBox>
+                  <MKBox mb={2}>
+                    <MKInput type="password" label="Confirm Password" fullWidth />
+                  </MKBox>
                   <MKBox display="flex" alignItems="center" ml={-1}>
-                    <Switch checked={rememberMe} onChange={handleSetRememberMe} />
+                    <Switch checked={sellerHu} onChange={handleSetSellerHu} />
                     <MKTypography
                       variant="button"
                       fontWeight="regular"
                       color="text"
-                      onClick={handleSetRememberMe}
+                      onClick={handleSetSellerHu}
                       sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
                     >
-                      &nbsp;&nbsp;Remember me
+                      &nbsp;&nbsp;I am a Seller
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
                     <MKButton variant="gradient" color="info" fullWidth>
-                      sign in
+                      sign up
                     </MKButton>
-                  </MKBox>
-                  <MKBox mt={3} mb={1} textAlign="center">
-                    <MKTypography variant="button" color="text">
-                      Don&apos;t have an account?{" "}
-                      <MKTypography
-                        component={Link}
-                        to="/sign-up"
-                        variant="button"
-                        color="info"
-                        fontWeight="medium"
-                        textGradient
-                      >
-                        Sign up
-                      </MKTypography>
-                    </MKTypography>
                   </MKBox>
                 </MKBox>
               </MKBox>

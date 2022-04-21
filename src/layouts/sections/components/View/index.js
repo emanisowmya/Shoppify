@@ -1,49 +1,21 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { useState, useEffect } from "react";
 
 // prop-types is a library for type checking of props
 import PropTypes from "prop-types";
-
-// react-copy-to-clipboard components
-import { CopyToClipboard } from "react-copy-to-clipboard";
-
-// react-syntax-highlighter components
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 // @mui material components
 import Grid from "@mui/material/Grid";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Slide from "@mui/material/Slide";
+import TextField from "@mui/material/TextField";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
-import MKAlert from "components/MKAlert";
-import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
-
-// Material Kit 2 React base styles
-import colors from "assets/theme/base/colors";
+import Button from "@mui/material/Button";
 
 function View({ children, code, title, height, ...rest }) {
-  const { grey } = colors;
-
   const [activeTab, setActiveTab] = useState(0);
   const [success, setSuccess] = useState(false);
 
@@ -101,7 +73,7 @@ function View({ children, code, title, height, ...rest }) {
                       className="fas fa-code"
                     />
                   }
-                  label="Code"
+                  label="Buy Now"
                 />
               </Tabs>
             </AppBar>
@@ -124,53 +96,47 @@ function View({ children, code, title, height, ...rest }) {
       </MKBox>
       <MKBox display={activeTab === 1 ? "block" : "none"} p={3}>
         <MKBox
-          bgColor="grey-100"
+          bgColor="grey-200"
           position="relative"
           width="100%"
           borderRadius="xl"
+          padding="3%"
           sx={{ overflow: "hidden" }}
         >
-          <CopyToClipboard text={code}>
-            <MKButton
-              variant="gradient"
-              color="dark"
-              size="small"
-              sx={{ position: "absolute", top: "0.5rem", right: "0.5rem" }}
-              onClick={() => setSuccess(true)}
-            >
-              <MKBox color="white" mr={0.5} className="fas fa-copy" /> Copy
-            </MKButton>
-          </CopyToClipboard>
-          <Slide direction="down" in={success} unmountOnExit>
-            <MKBox position="absolute" top="0.5rem" left={0} width="100%">
-              <MKAlert
-                width="25%"
-                mx="auto"
-                color="success"
-                sx={{ minHeight: "2.5rem !important", py: 1, justifyContent: "center" }}
-              >
-                <MKTypography variant="body2" color="white" fontWeight="regular">
-                  Code successfully copied!
-                </MKTypography>
-              </MKAlert>
-            </MKBox>
-          </Slide>
-          <SyntaxHighlighter
-            language="jsx"
-            style={prism}
-            showLineNumbers
-            customStyle={{
-              height,
-              maxHeight: "40rem",
-              fontSize: "1rem",
-              backgroundColor: grey[100],
-              padding: "1rem 1rem 1rem 0.25rem",
-              overflowY: "scroll",
-              margin: 0,
-            }}
-          >
-            {code}
-          </SyntaxHighlighter>
+          <TextField
+            id="filled-helperText"
+            label="Name"
+            defaultValue="Default Value"
+            helperText="Enter your full name"
+            variant="filled"
+          />
+        </MKBox>
+        <MKBox
+          bgColor="grey-200"
+          position="relative"
+          width="100%"
+          borderRadius="xl"
+          paddingLeft="3%"
+          sx={{ overflow: "hidden" }}
+        >
+          <TextField
+            id="filled-helperText"
+            label="Address"
+            defaultValue="Default Value"
+            helperText="Enter your full address"
+            variant="filled"
+          />
+        </MKBox>
+        <MKBox
+          bgColor="grey-200"
+          position="relative"
+          width="100%"
+          borderRadius="xl"
+          paddingLeft="40%"
+          paddingTop="5%"
+          sx={{ overflow: "hidden" }}
+        >
+          <Button variant="contained">Submit</Button>
         </MKBox>
       </MKBox>
     </MKBox>

@@ -21,6 +21,7 @@ import SimpleFooter from "examples/Footers/SimpleFooter";
 
 // Material Kit 2 React page layout routes
 import routes from "routes";
+import axios from "axios";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
@@ -29,6 +30,35 @@ function SignInBasic() {
   const [sellerHu, setSellerHu] = useState(false);
 
   const handleSetSellerHu = () => setSellerHu(!sellerHu);
+  const [name, setName] = useState("");
+  const [emailid, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const AddUser = () => {
+    if (!sellerHu) {
+      axios
+        .post("http://localhost:8080/addbuyer", {
+          name,
+          emailid,
+          password,
+        })
+        .then((res) => {
+          console.log("inserted", res);
+          window.location.reload(false);
+        });
+    } else {
+      axios
+        .post("http://localhost:8080/addseller", {
+          name,
+          emailid,
+          password,
+        })
+        .then((res) => {
+          console.log("inserted", res);
+          window.location.reload(false);
+        });
+    }
+  };
 
   return (
     <>
@@ -80,13 +110,34 @@ function SignInBasic() {
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
-                    <MKInput type="name" label="Name" fullWidth />
+                    <MKInput
+                      type="name"
+                      label="Name"
+                      fullWidth
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
+                    />
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="email" label="Email" fullWidth />
+                    <MKInput
+                      type="email"
+                      label="Email"
+                      fullWidth
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                    />
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" label="Password" fullWidth />
+                    <MKInput
+                      type="password"
+                      label="Password"
+                      fullWidth
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                    />
                   </MKBox>
                   <MKBox mb={2}>
                     <MKInput type="password" label="Confirm Password" fullWidth />
@@ -104,7 +155,14 @@ function SignInBasic() {
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" fullWidth>
+                    <MKButton
+                      variant="gradient"
+                      color="info"
+                      fullWidth
+                      onClick={() => {
+                        AddUser(name, emailid, password);
+                      }}
+                    >
                       sign up
                     </MKButton>
                   </MKBox>

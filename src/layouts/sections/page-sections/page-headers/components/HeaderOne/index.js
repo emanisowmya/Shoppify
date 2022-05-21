@@ -8,13 +8,27 @@ import PropTypes from "prop-types";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
+import axios from "axios";
 // Images
 // import bgImage0 from "assets/images/Purse/purse1.jpg";
 
-function HeaderOne({ title, index }) {
+function HeaderOne({ title, index, name }) {
   const images = require.context(`../../../../../../assets/images/Purse`, true);
   const bgImage0 = images(`./${title.toLowerCase()}${index}.jpg`).default;
   console.log(title);
+
+  const AddToCart = () => {
+    axios
+      .post("http://localhost:8080/addtocart", {
+        title,
+        index,
+        name,
+      })
+      .then((res) => {
+        console.log("inserted", res);
+        window.location.reload(false);
+      });
+  };
   return (
     <MKBox component="header" position="relative" height="100%">
       <MKBox
@@ -50,7 +64,13 @@ function HeaderOne({ title, index }) {
             </MKTypography>
             <Stack direction="row" spacing={1} mt={3}>
               <MKButton color="white">Buy Now</MKButton>
-              <MKButton variant="text" color="white">
+              <MKButton
+                variant="text"
+                color="white"
+                onClick={() => {
+                  AddToCart();
+                }}
+              >
                 Add to cart
               </MKButton>
             </Stack>
@@ -64,6 +84,7 @@ function HeaderOne({ title, index }) {
 HeaderOne.propTypes = {
   title: PropTypes.string.isRequired,
   index: PropTypes.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default HeaderOne;

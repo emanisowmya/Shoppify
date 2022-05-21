@@ -32,7 +32,7 @@ import axios from "axios";
 function Presentation() {
   useEffect(() => {
     axios.get("http://localhost:3900/homedata").then((data) => {
-      console.log("hi from front", data);
+      console.log("hi from front", data.data[0].manufacterer);
     });
   }, []);
   return (

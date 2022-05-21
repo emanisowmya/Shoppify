@@ -101,7 +101,14 @@ function SignInBasic() {
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" fullWidth>
+                    <MKButton
+                      variant="gradient"
+                      color="info"
+                      fullWidth
+                      onClick={() => {
+                        alert("Invalid Credentials");
+                      }}
+                    >
                       sign in
                     </MKButton>
                   </MKBox>

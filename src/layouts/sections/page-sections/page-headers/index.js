@@ -22,7 +22,7 @@ function PageHeaders() {
       ]}
     >
       <View title={value} type={type} code={headerOneCode} height="40rem">
-        <HeaderOne index={num} title={topic} />
+        <HeaderOne index={num} title={topic} name={value} />
       </View>
     </BaseLayout>
   );

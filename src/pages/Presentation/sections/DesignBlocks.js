@@ -31,10 +31,10 @@ function DesignBlocks() {
       </Grid>
       <Grid item xs={12} lg={9}>
         <Grid container spacing={3}>
-          {items.map(({ image, name, count, route, pro }) => (
+          {items.map(({ image, name, count }, index) => (
             <Grid item xs={12} md={4} sx={{ mb: 2 }} key={name}>
-              <Link to={pro ? "/" : route}>
-                <ExampleCard image={image} name={name} count={count} pro={pro} />
+              <Link to={`/page-headers/${name}/${count}/${index}/${title}`}>
+                <ExampleCard image={image} name={name} count={count} />
               </Link>
             </Grid>
           ))}

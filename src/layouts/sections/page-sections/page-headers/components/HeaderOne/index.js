@@ -1,37 +1,22 @@
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
+import PropTypes from "prop-types";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
-
 // Images
-import bgImage from "assets/images/Purse/purse1.jpeg";
+// import bgImage0 from "assets/images/Purse/purse1.jpg";
 
-function HeaderOne() {
+function HeaderOne({ title, index }) {
+  const images = require.context(`../../../../../../assets/images/Purse`, true);
+  const bgImage0 = images(`./${title.toLowerCase()}${index}.jpg`).default;
+  console.log(title);
   return (
     <MKBox component="header" position="relative" height="100%">
-      <MKBox component="nav" position="absolute" top="0.5rem" width="100%">
-        <Container>
-          <Grid container flexDirection="row" alignItems="center">
-            <MKTypography
-              component={Link}
-              href="#"
-              variant="button"
-              color="white"
-              fontWeight="regular"
-              py={0.8125}
-              mr={2}
-            >
-              Female Purse
-            </MKTypography>
-          </Grid>
-        </Container>
-      </MKBox>
       <MKBox
         display="flex"
         alignItems="center"
@@ -41,7 +26,7 @@ function HeaderOne() {
             `${linearGradient(
               rgba(gradients.dark.main, 0.5),
               rgba(gradients.dark.state, 0.5)
-            )}, url(${bgImage})`,
+            )}, url(${bgImage0})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -58,10 +43,10 @@ function HeaderOne() {
                 },
               })}
             >
-              Arista Vault
+              {title}
             </MKTypography>
             <MKTypography variant="body1" color="white" opacity={0.8} pr={6} mr={6}>
-              Very nice purse with synthetic cloth.
+              Best quality product with reasonable price.
             </MKTypography>
             <Stack direction="row" spacing={1} mt={3}>
               <MKButton color="white">Buy Now</MKButton>
@@ -75,5 +60,10 @@ function HeaderOne() {
     </MKBox>
   );
 }
+
+HeaderOne.propTypes = {
+  title: PropTypes.string.isRequired,
+  index: PropTypes.isRequired,
+};
 
 export default HeaderOne;

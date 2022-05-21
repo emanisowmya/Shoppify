@@ -8,17 +8,21 @@ import HeaderOne from "layouts/sections/page-sections/page-headers/components/He
 // PageHeaders page components code
 import headerOneCode from "layouts/sections/page-sections/page-headers/components/HeaderOne/code";
 
+import { useParams } from "react-router-dom";
+
 function PageHeaders() {
+  const { value, num, type, topic } = useParams();
+  console.log("value is", num, value, type, topic);
   return (
     <BaseLayout
-      title="Purse"
+      title={topic}
       breadcrumb={[
-        { label: "Purse", route: "/sections/page-sections/page-headers" },
-        { label: "Purse" },
+        { label: "SHOPPIFY", route: "/sections/page-sections/page-headers" },
+        { label: "ITEMS" },
       ]}
     >
-      <View title="Aristi vault" code={headerOneCode} height="40rem">
-        <HeaderOne />
+      <View title={value} type={type} code={headerOneCode} height="40rem">
+        <HeaderOne index={num} title={topic} />
       </View>
     </BaseLayout>
   );

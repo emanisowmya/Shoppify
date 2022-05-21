@@ -22,10 +22,19 @@ import DesignBlocks from "pages/Presentation/sections/DesignBlocks";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
+import React, { useEffect } from "react";
+
 // Images
 import bgImage from "assets/images/bg1.jpg";
 
+import axios from "axios";
+
 function Presentation() {
+  useEffect(() => {
+    axios.get("http://localhost:3900/homedata").then((data) => {
+      console.log("hi from front", data);
+    });
+  }, []);
   return (
     <>
       <DefaultNavbar routes={routes} sticky />
@@ -67,7 +76,7 @@ function Presentation() {
               px={{ xs: 6, lg: 12 }}
               mt={1}
             >
-              Change the way you shop
+              Change the way you shop!!!
             </MKTypography>
           </Grid>
         </Container>

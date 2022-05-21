@@ -44,7 +44,7 @@ export default function App() {
         {getRoutes(routes)}
         <Route path="/home" element={<Presentation />} />
         <Route path="*" element={<Navigate to="/home" />} />
-        <Route path="/page-headers" element={<PageHeaders />} />,
+        <Route path="/page-headers/:value/:type/:num/:topic" element={<PageHeaders />} />,
         <Route path="/sign-up" element={<SignUp />} />,
       </Routes>
     </ThemeProvider>

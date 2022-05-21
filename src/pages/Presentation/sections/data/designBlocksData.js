@@ -1,9 +1,18 @@
-import purse1 from "assets/images/Purse/purse1.jpeg";
-import purse2 from "assets/images/Purse/purse2.jpg";
-import purse3 from "assets/images/Purse/purse3.jpg";
-
-const imagesPrefix =
-  "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-design-system/presentation/sections";
+import purse1 from "assets/images/Purse/purse0.jpg";
+import purse2 from "assets/images/Purse/purse1.jpg";
+import purse3 from "assets/images/Purse/purse2.jpg";
+import furniture0 from "assets/images/Purse/furniture0.jpg";
+import furniture1 from "assets/images/Purse/furniture1.jpg";
+import furniture2 from "assets/images/Purse/furniture2.jpg";
+import shoes0 from "assets/images/Purse/shoes0.jpg";
+import shoes1 from "assets/images/Purse/shoes1.jpg";
+import shoes2 from "assets/images/Purse/shoes2.jpg";
+import belt0 from "assets/images/Purse/belt0.jpg";
+import belt1 from "assets/images/Purse/belt1.jpg";
+import belt2 from "assets/images/Purse/belt2.jpg";
+import dress0 from "assets/images/Purse/dress0.jpg";
+import dress1 from "assets/images/Purse/dress1.jpg";
+import dress2 from "assets/images/Purse/dress2.jpg";
 
 export default [
   {
@@ -19,13 +28,13 @@ export default [
       {
         image: `${purse2}`,
         name: "Female purse",
-        route: "/sections/page-sections/features",
+        route: "/page-headers",
         count: 500,
       },
       {
         image: `${purse3}`,
         name: "Male purse",
-        route: "/sections/page-sections/features",
+        route: "/page-headers",
         count: 750,
       },
     ],
@@ -35,93 +44,90 @@ export default [
     description: "30+ components that will help go through the pages",
     items: [
       {
-        image: `${imagesPrefix}/navbars.jpg`,
-        name: "Navbars",
-        count: 4,
-        route: "/sections/navigation/navbars",
+        image: `${furniture0}`,
+        name: "Sofa",
+        count: 14000,
+        route: "/page-headers",
       },
       {
-        image: `${imagesPrefix}/nav-tabs.jpg`,
-        name: "Nav Tabs",
-        count: 2,
-        route: "/sections/navigation/nav-tabs",
+        image: `${furniture1}`,
+        name: "Bed",
+        count: 25000,
+        route: "/page-headers",
       },
       {
-        image: `${imagesPrefix}/pagination.jpg`,
-        name: "Pagination",
-        count: 3,
-        route: "/sections/navigation/pagination",
-      },
-    ],
-  },
-  {
-    title: "Input Areas",
-    description: "50+ elements that you need for text manipulation and insertion",
-    items: [
-      {
-        image: `${imagesPrefix}/newsletters.jpg`,
-        name: "Newsletters",
-        count: 6,
-        pro: true,
-      },
-      {
-        image: `${imagesPrefix}/contact-sections.jpg`,
-        name: "Contact Sections",
-        count: 8,
-        pro: true,
-      },
-      {
-        image: `${imagesPrefix}/forms.jpg`,
-        name: "Forms",
-        count: 3,
-        route: "/sections/input-areas/forms",
+        image: `${furniture2}`,
+        name: "Shelf",
+        count: 20000,
+        route: "/page-headers",
       },
     ],
   },
   {
-    title: "Attention Catchers",
-    description: "20+ Fully coded components that popup from different places of the screen",
+    title: "Shoes",
+    description: "Best quality shoes with best price.",
     items: [
       {
-        image: `${imagesPrefix}/alerts.jpg`,
-        name: "Alerts",
-        count: 4,
+        image: `${shoes0}`,
+        name: "Nike Shoes",
+        count: 5000,
+      },
+      {
+        image: `${shoes1}`,
+        name: "Men Casuals",
+        count: 999,
+      },
+      {
+        image: `${shoes2}`,
+        name: "Sports Shoes",
+        count: 2999,
+        route: "/page-headers",
+      },
+    ],
+  },
+  {
+    title: "Belt",
+    description: "20+ best quality belts.",
+    items: [
+      {
+        image: `${belt0}`,
+        name: "Leather Belt",
+        count: 999,
         route: "/sections/attention-catchers/alerts",
       },
       {
-        image: `${imagesPrefix}/toasts.jpg`,
-        name: "Notifications",
-        count: 3,
-        pro: true,
+        image: `${belt1}`,
+        name: "Men belt",
+        count: 3000,
       },
       {
-        image: `${imagesPrefix}/modals.jpg`,
-        name: "Modals",
-        count: 5,
+        image: `${belt2}`,
+        name: "Women belt",
+        count: 1999,
         route: "/sections/attention-catchers/modals",
       },
     ],
   },
   {
-    title: "Elements",
-    description: "80+ carefully crafted small elements that come with multiple colors and shapes",
+    title: "Dress",
+    description: "Best quality dresses.",
     items: [
       {
-        image: `${imagesPrefix}/buttons.jpg`,
-        name: "Buttons",
-        count: 6,
+        image: `${dress0}`,
+        name: "Jeans",
+        count: 1499,
         route: "/sections/elements/buttons",
       },
       {
-        image: `${imagesPrefix}/avatars.jpg`,
-        name: "Avatars",
-        count: 2,
+        image: `${dress1}`,
+        name: "Jump Suit",
+        count: 999,
         route: "/sections/elements/avatars",
       },
       {
-        image: `${imagesPrefix}/dropdowns.jpg`,
-        name: "Dropdowns",
-        count: 2,
+        image: `${dress2}`,
+        name: "Long Frock",
+        count: 4999,
         route: "/sections/elements/dropdowns",
       },
     ],

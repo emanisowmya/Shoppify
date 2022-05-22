@@ -14,12 +14,38 @@ import TextField from "@mui/material/TextField";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import Button from "@mui/material/Button";
+import axios from "axios";
 
-function View({ children, code, title, height, ...rest }) {
+function View({ children, code, title, height, index, name, ...rest }) {
+  const buyerid = 567;
+  const sellerid = 100;
+  const itemnumber = 789;
+
   const [activeTab, setActiveTab] = useState(0);
   const [success, setSuccess] = useState(false);
+  const [buyername, setName] = useState("");
+  const [address, setAddress] = useState("");
 
   const handleTabType = (event, newValue) => setActiveTab(newValue);
+
+  const AddOrder = () => {
+    console.log(itemnumber, buyerid, sellerid, buyername, address, index, title, name);
+    axios
+      .post("http://localhost:8080/addorder", {
+        itemnumber,
+        buyerid,
+        sellerid,
+        buyername,
+        address,
+        index,
+        title,
+        name,
+      })
+      .then((res) => {
+        console.log("inserted", res);
+        window.location.reload(false);
+      });
+  };
 
   useEffect(() => {
     setTimeout(() => setSuccess(false), 3000);
@@ -109,6 +135,9 @@ function View({ children, code, title, height, ...rest }) {
             defaultValue="Default Value"
             helperText="Enter your full name"
             variant="filled"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
           />
         </MKBox>
         <MKBox
@@ -125,6 +154,9 @@ function View({ children, code, title, height, ...rest }) {
             defaultValue="Default Value"
             helperText="Enter your full address"
             variant="filled"
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
           />
         </MKBox>
         <MKBox
@@ -136,7 +168,14 @@ function View({ children, code, title, height, ...rest }) {
           paddingTop="5%"
           sx={{ overflow: "hidden" }}
         >
-          <Button variant="contained">Submit</Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              AddOrder();
+            }}
+          >
+            Submit
+          </Button>
         </MKBox>
       </MKBox>
     </MKBox>
@@ -154,6 +193,8 @@ View.propTypes = {
   code: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   height: PropTypes.string,
+  index: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default View;

@@ -3,16 +3,16 @@ module.exports = (sequelize, Sequelize) => {
     manufacterer: {
       type: Sequelize.STRING,
     },
-    item_number: {
+    itemnumber: {
       type: Sequelize.INTEGER,
     },
     buyer: {
       type: Sequelize.STRING,
     },
-    item_name: {
+    itemname: {
       type: Sequelize.STRING,
     },
-    item_type: {
+    itemtype: {
       type: Sequelize.STRING,
     },
     index: {

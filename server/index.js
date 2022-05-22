@@ -32,8 +32,9 @@ const dbConnection = mysql.createConnection({
 
 app.post("/addbuyer", (req, res) => {
   const { name, emailid, password } = req.body;
+  const id = Math.floor(Math.random() * 1000 + 1);
   dbConnection.query(
-    `INSERT INTO buyers VALUES('${emailid}',0,5,'${name}','null','${password}')`,
+    `INSERT INTO buyers VALUES('${emailid}',0,${id},'${name}','null','${password}')`,
     (err, result) => {
       if (err) {
         console.log(err);
@@ -44,9 +45,10 @@ app.post("/addbuyer", (req, res) => {
 });
 
 app.post("/addseller", (req, res) => {
+  const id = Math.floor(Math.random() * 1000 + 1);
   const { name, emailid, password } = req.body;
   dbConnection.query(
-    `INSERT INTO sellers VALUES('${emailid}',0,5,'${name}','null','${password}')`,
+    `INSERT INTO sellers VALUES('${emailid}',0,${id},'${name}','null','${password}')`,
     (err, result) => {
       if (err) {
         console.log(err);
@@ -58,8 +60,9 @@ app.post("/addseller", (req, res) => {
 
 app.post("/addtocart", (req, res) => {
   const { title, index, name } = req.body;
+  const id = Math.floor(Math.random() * 1000 + 1);
   dbConnection.query(
-    `INSERT INTO carts VALUES(5,'seller',0,'jdsd','${name}','${title}','${index}')`,
+    `INSERT INTO carts VALUES(${id},'seller',0,'jdsd','${name}','${title}','${index}')`,
     (err, result) => {
       if (err) {
         console.log(err);
@@ -67,6 +70,38 @@ app.post("/addtocart", (req, res) => {
       res.send("suceeesful");
     }
   );
+});
+
+app.post("/addorder", (req, res) => {
+  const { itemnumber, buyerid, sellerid, buyername, address, index, title, name } = req.body;
+  const id = Math.floor(Math.random() * 1000 + 1);
+  dbConnection.query(
+    `INSERT INTO orders VALUES(${id},${itemnumber},${buyerid},0,${sellerid},'${title}','${name}','${index}','Godown','${address}')`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      res.send("suceeesful");
+    }
+  );
+});
+
+app.get("/getcart", (req, res) => {
+  dbConnection.query("SELECT * FROM carts", (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    res.send(result);
+  });
+});
+
+app.get("/getorder", (req, res) => {
+  dbConnection.query("SELECT * FROM orders", (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    res.send(result);
+  });
 });
 
 const PORT = process.env.PORT || 8080;

@@ -21,7 +21,7 @@ function PageHeaders() {
         { label: "ITEMS" },
       ]}
     >
-      <View title={value} type={type} code={headerOneCode} height="40rem">
+      <View title={value} type={type} code={headerOneCode} index={num} name={topic} height="40rem">
         <HeaderOne index={num} title={topic} name={value} />
       </View>
     </BaseLayout>

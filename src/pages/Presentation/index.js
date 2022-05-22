@@ -22,19 +22,12 @@ import DesignBlocks from "pages/Presentation/sections/DesignBlocks";
 import routes from "routes";
 import footerRoutes from "footer.routes";
 
-import React, { useEffect } from "react";
+import React from "react";
 
 // Images
 import bgImage from "assets/images/bg1.jpg";
 
-import axios from "axios";
-
 function Presentation() {
-  useEffect(() => {
-    axios.get("http://localhost:3900/homedata").then((data) => {
-      console.log("hi from front", data.data[0].manufacterer);
-    });
-  }, []);
   return (
     <>
       <DefaultNavbar routes={routes} sticky />

@@ -4,9 +4,8 @@ import Grid from "@mui/material/Grid";
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKInput from "components/MKInput";
-import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
-
+import React, { useState, useEffect } from "react";
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
@@ -14,11 +13,28 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 // Routes
 import routes from "routes";
 import footerRoutes from "footer.routes";
-
+import axios from "axios";
 // Image
 import bgImage from "assets/images/illustrations/illustration-reset.jpg";
 
 function ContactUs() {
+  const [id1, setid] = useState(0);
+  const [order, setOrder] = useState([]);
+  const [location1, setLocation] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/getorder").then((res) => {
+      setOrder(res.data);
+    });
+  });
+
+  const TrackOrder = () => {
+    for (let i = 0; i < order.length; i += 1) {
+      const { location, id } = order[i];
+      if (id.toString() === id1.toString()) setLocation(location);
+    }
+    // window.location.reload();
+  };
   return (
     <>
       <MKBox position="fixed" top="0.5rem" width="100%">
@@ -82,25 +98,21 @@ function ContactUs() {
                       label="Order id"
                       InputLabelProps={{ shrink: true }}
                       fullWidth
+                      onChange={(e) => {
+                        setid(e.target.value);
+                      }}
                     />
                   </Grid>
-                  {/*                   
-                  <Grid item xs={12}>
-                    <MKInput
-                      variant="standard"
-                      label="What can we help you?"
-                      placeholder="Describe your problem in at least 250 characters"
-                      InputLabelProps={{ shrink: true }}
-                      multiline
-                      fullWidth
-                      rows={6}
-                    />
-                  </Grid> */}
                 </Grid>
                 <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
-                  <MKButton type="submit" variant="gradient" color="info">
+                  <button type="button" onClick={() => TrackOrder()}>
                     Submit
-                  </MKButton>
+                  </button>
+                </Grid>
+                <Grid container item justifyContent="center" xs={12} mt={5} mb={2}>
+                  <MKTypography variant="h6" color="black">
+                    {location1}
+                  </MKTypography>
                 </Grid>
               </MKBox>
             </MKBox>

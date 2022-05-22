@@ -21,4 +21,5 @@ db.sequelize = sequelize;
 db.cart = require("./cart.model.js")(sequelize, Sequelize);
 db.seller = require("./seller.model.js")(sequelize, Sequelize);
 db.buyer = require("./buyer.model.js")(sequelize, Sequelize);
+db.ordr = require("./order.model.js")(sequelize, Sequelize);
 module.exports = db;
